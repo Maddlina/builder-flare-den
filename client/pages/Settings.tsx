@@ -346,9 +346,9 @@ export default function Settings() {
                           Choose your preferred color theme
                         </p>
                       </div>
-                      <Select 
-                        value={preferences.theme} 
-                        onValueChange={(value) => setPreferences(prev => ({ ...prev, theme: value }))}
+                      <Select
+                        value={preferences.theme}
+                        onValueChange={(value: 'light' | 'dark' | 'system') => setPreferences(prev => ({ ...prev, theme: value }))}
                       >
                         <SelectTrigger className="w-40">
                           <SelectValue />
