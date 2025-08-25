@@ -161,7 +161,7 @@ export function Footer() {
                 Made with <Heart className="inline h-4 w-4 text-red-500 mx-1" /> for the community
               </p>
               <p className="text-sm text-gray-500">
-                © 2024 ExpenseTracker Pro • Open Source • MIT License
+                © 2024 Smart Budget • Open Source • MIT License
               </p>
             </div>
             

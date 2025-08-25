@@ -94,7 +94,7 @@ export default function NotFound() {
             <div className="mt-8 pt-6 border-t border-border/30">
               <div className="flex items-center justify-center gap-2 text-muted-foreground">
                 <Sparkles className="h-4 w-4" />
-                <span className="text-sm font-medium">ExpenseTracker Pro</span>
+                <span className="text-sm font-medium">Smart Budget</span>
               </div>
             </div>
           </CardContent>
