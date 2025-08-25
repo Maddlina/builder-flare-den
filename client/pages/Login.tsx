@@ -44,7 +44,7 @@ export default function Login() {
     if (success) {
       toast({
         title: "Welcome back!",
-        description: "You've successfully logged in to ExpenseTracker Pro.",
+        description: "You've successfully logged in to Smart Budget.",
       });
       navigate('/dashboard');
     } else {
@@ -81,20 +81,20 @@ export default function Login() {
               </div>
               <div>
                 <h1 className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-                  ExpenseTracker Pro
+                  Smart Budget
                 </h1>
-                <p className="text-sm text-muted-foreground">Ultimate Financial Freedom</p>
+                <p className="text-sm text-muted-foreground">Intelligent Financial Control</p>
               </div>
             </div>
             
             <h2 className="text-4xl md:text-5xl font-bold text-foreground leading-tight">
-              Master Your
-              <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent"> Finances</span>
+              Smart
+              <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent"> Budgeting</span>
             </h2>
-            
+
             <p className="text-lg text-muted-foreground leading-relaxed">
-              The most powerful expense management platform. Track every penny, 
-              set smart budgets, and achieve your financial goals with ease.
+              The most intelligent budget management platform. Track every penny,
+              set smart budgets, and achieve your financial goals with AI-powered insights.
             </p>
           </div>
 
