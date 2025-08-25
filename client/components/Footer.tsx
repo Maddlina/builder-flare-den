@@ -60,13 +60,13 @@ export function Footer() {
                   <Zap className="h-6 w-6" />
                 </div>
                 <div>
-                  <h3 className="text-xl font-bold">ExpenseTracker Pro</h3>
-                  <p className="text-blue-100 text-sm">Ultimate Financial Freedom</p>
+                  <h3 className="text-xl font-bold">Smart Budget</h3>
+                  <p className="text-blue-100 text-sm">Intelligent Financial Control</p>
                 </div>
               </div>
               <p className="text-blue-100 mb-4">
-                The most powerful expense management platform ever created. 
-                100% free, no subscriptions, no limits. Built with love for everyone.
+                The most intelligent budget management platform ever created.
+                100% free, no subscriptions, no limits. Built with AI-powered insights for everyone.
               </p>
               <div className="flex flex-wrap gap-2">
                 <Badge className="bg-green-500/20 text-green-100 border-green-400/50">
@@ -109,45 +109,59 @@ export function Footer() {
             </CardContent>
           </Card>
 
-          {/* Crypto Donations */}
-          <Card className="border-0 shadow-lg">
+          {/* Crypto Donation Zone */}
+          <Card className="border-0 shadow-lg bg-gradient-to-br from-green-50 to-emerald-50 dark:from-green-900/20 dark:to-emerald-900/20">
             <CardContent className="p-6">
-              <h3 className="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
+              <h3 className="text-xl font-bold text-gray-900 dark:text-gray-100 mb-4 flex items-center gap-2">
                 <Heart className="h-5 w-5 text-red-500" />
-                Support Development
+                💰 Crypto Donation Zone
               </h3>
-              <p className="text-gray-600 mb-4 text-sm">
-                Love this free app? Support future development with crypto donations:
+              <p className="text-gray-600 dark:text-gray-300 mb-4 text-sm">
+                Support Smart Budget development! Your crypto donations help keep this amazing app 100% free forever:
               </p>
-              <div className="space-y-3">
+              <div className="space-y-4">
                 {wallets.map((wallet) => (
-                  <div key={wallet.type} className="group">
-                    <div className="flex items-center justify-between mb-1">
-                      <span className={`font-medium ${wallet.color} flex items-center gap-1`}>
-                        <span className="text-lg">{wallet.icon}</span>
-                        {wallet.type}
+                  <div key={wallet.type} className="group bg-white/50 dark:bg-gray-800/50 rounded-lg p-3 border border-gray-200 dark:border-gray-700">
+                    <div className="flex items-center justify-between mb-2">
+                      <span className={`font-bold ${wallet.color} flex items-center gap-2 text-lg`}>
+                        <span className="text-2xl">{wallet.icon}</span>
+                        {wallet.type} Wallet
                       </span>
                       <Button
                         size="sm"
                         variant="outline"
                         onClick={() => copyToClipboard(wallet.address, wallet.type)}
-                        className="h-6 px-2 text-xs"
+                        className={`h-8 px-3 text-xs font-semibold transition-all duration-300 hover:scale-105 ${
+                          copiedWallet === wallet.type
+                            ? 'bg-green-100 border-green-300 text-green-700 dark:bg-green-900/50 dark:text-green-400'
+                            : 'bg-gray-100 hover:bg-gray-200 dark:bg-gray-700 dark:hover:bg-gray-600'
+                        }`}
                       >
                         {copiedWallet === wallet.type ? (
-                          <span className="text-green-600">Copied!</span>
+                          <>
+                            <span className="text-green-600 dark:text-green-400">✓ Copied!</span>
+                          </>
                         ) : (
                           <>
                             <Copy className="h-3 w-3 mr-1" />
-                            Copy
+                            Copy Address
                           </>
                         )}
                       </Button>
                     </div>
-                    <div className="bg-gray-100 rounded p-2 font-mono text-xs text-gray-600 break-all">
+                    <div className="bg-gray-900 dark:bg-gray-950 rounded-lg p-3 font-mono text-xs text-green-400 break-all border border-gray-300 dark:border-gray-600">
                       {wallet.address}
                     </div>
+                    <p className="text-xs text-gray-500 dark:text-gray-400 mt-2 text-center">
+                      Send {wallet.type} to this address to support Smart Budget
+                    </p>
                   </div>
                 ))}
+              </div>
+              <div className="mt-4 p-3 bg-gradient-to-r from-yellow-50 to-orange-50 dark:from-yellow-900/20 dark:to-orange-900/20 rounded-lg border border-yellow-200 dark:border-yellow-800">
+                <p className="text-sm text-center text-yellow-800 dark:text-yellow-200 font-semibold">
+                  🙏 Every donation helps us keep Smart Budget free and add new features!
+                </p>
               </div>
             </CardContent>
           </Card>
