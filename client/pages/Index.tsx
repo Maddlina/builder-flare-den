@@ -5,6 +5,7 @@ import { CategoryAnalytics } from '@/components/dashboard/CategoryAnalytics';
 import { AddExpenseModal } from '@/components/expense/AddExpenseModal';
 import { Footer } from '@/components/Footer';
 import { expenseStore } from '@/lib/expense-store';
+import '@/lib/sample-data'; // Load sample data
 import { Expense, ExpenseAnalytics } from '@shared/types';
 import { toast } from '@/components/ui/use-toast';
 
