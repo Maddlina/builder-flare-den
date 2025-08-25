@@ -37,10 +37,10 @@ export function DashboardHeader({ analytics, onAddExpense, onExport }: Dashboard
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
             <div>
               <h1 className="text-3xl md:text-4xl font-bold mb-2">
-                Welcome to ExpenseTracker Pro
+                Welcome to Smart Budget
               </h1>
               <p className="text-blue-100 text-lg">
-                The most powerful free expense management platform
+                The most intelligent free budget management platform
               </p>
               <Badge className="mt-3 bg-green-500/20 text-green-100 border-green-400/50">
                 100% Free • No Subscriptions • Open Source

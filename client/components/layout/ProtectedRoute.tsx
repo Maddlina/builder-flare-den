@@ -18,7 +18,7 @@ export function ProtectedRoute({ children }: ProtectedRouteProps) {
             <Loader2 className="h-8 w-8 text-white animate-spin" />
           </div>
           <div className="text-center">
-            <h2 className="text-lg font-semibold text-foreground">Loading ExpenseTracker Pro</h2>
+            <h2 className="text-lg font-semibold text-foreground">Loading Smart Budget</h2>
             <p className="text-sm text-muted-foreground">Please wait a moment...</p>
           </div>
         </div>

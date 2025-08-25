@@ -31,6 +31,7 @@ import {
 } from 'lucide-react';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { Input } from '@/components/ui/input';
+import { toast } from '@/components/ui/use-toast';
 
 const navigation = [
   { name: 'Dashboard', href: '/dashboard', icon: LayoutDashboard },
@@ -141,10 +142,18 @@ export function Navigation({ onAddExpense, onExport }: NavigationProps) {
             </div>
 
             {/* Notifications */}
-            <Button 
-              variant="ghost" 
+            <Button
+              variant="ghost"
               size="sm"
               className="h-9 w-9 rounded-xl hover:bg-muted/50 transition-all duration-300 hover:scale-105 relative"
+              onClick={() => {
+                // Simple notification handling
+                toast({
+                  title: "Notifications",
+                  description: "You have 2 new budget alerts and 1 weekly report ready.",
+                });
+              }}
+              title="View notifications"
             >
               <Bell className="h-4 w-4" />
               <span className="absolute -top-1 -right-1 h-3 w-3 bg-red-500 rounded-full animate-pulse"></span>
