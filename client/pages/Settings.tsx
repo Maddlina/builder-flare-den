@@ -56,7 +56,7 @@ export default function Settings() {
   });
 
   const [preferences, setPreferences] = useState({
-    theme: theme,
+    theme: theme as 'light' | 'dark' | 'system',
     currency: user?.preferences.currency || 'USD',
     language: user?.preferences.language || 'en',
     notifications: {

@@ -310,7 +310,7 @@ export default function Signup() {
                   <Checkbox
                     id="terms"
                     checked={acceptTerms}
-                    onCheckedChange={setAcceptTerms}
+                    onCheckedChange={(checked) => setAcceptTerms(checked === true)}
                     className="mt-0.5"
                   />
                   <Label htmlFor="terms" className="text-sm leading-relaxed cursor-pointer">
