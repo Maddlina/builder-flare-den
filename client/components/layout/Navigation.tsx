@@ -70,9 +70,9 @@ export function Navigation({ onAddExpense, onExport }: NavigationProps) {
               </div>
               <div className="hidden sm:block">
                 <h1 className="text-xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-                  ExpenseTracker Pro
+                  Smart Budget
                 </h1>
-                <p className="text-xs text-muted-foreground -mt-1">Ultimate Financial Freedom</p>
+                <p className="text-xs text-muted-foreground -mt-1">Intelligent Financial Control</p>
               </div>
             </Link>
           </div>
@@ -223,7 +223,7 @@ export function Navigation({ onAddExpense, onExport }: NavigationProps) {
                         <Sparkles className="h-5 w-5 text-white" />
                       </div>
                       <div>
-                        <h2 className="text-lg font-bold">ExpenseTracker Pro</h2>
+                        <h2 className="text-lg font-bold">Smart Budget</h2>
                         <p className="text-xs text-muted-foreground">Menu</p>
                       </div>
                     </div>

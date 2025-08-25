@@ -84,7 +84,7 @@ export default function Signup() {
     
     if (success) {
       toast({
-        title: "Welcome to ExpenseTracker Pro!",
+        title: "Welcome to Smart Budget!",
         description: "Your account has been created successfully.",
       });
       navigate('/dashboard');
@@ -117,9 +117,9 @@ export default function Signup() {
               </div>
               <div>
                 <h1 className="text-2xl font-bold bg-gradient-to-r from-emerald-600 to-blue-600 bg-clip-text text-transparent">
-                  ExpenseTracker Pro
+                  Smart Budget
                 </h1>
-                <p className="text-sm text-muted-foreground">Join the Financial Revolution</p>
+                <p className="text-sm text-muted-foreground">Join the Smart Budgeting Revolution</p>
               </div>
             </div>
             
