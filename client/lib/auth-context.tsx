@@ -1,4 +1,5 @@
 import React, { createContext, useContext, useEffect, useState } from 'react';
+import { generateSampleData } from './sample-data';
 
 export interface User {
   id: string;
@@ -86,6 +87,12 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       const { password: _, ...userWithoutPassword } = demoUser;
       setUser(userWithoutPassword);
       localStorage.setItem('expense-tracker-user', JSON.stringify(userWithoutPassword));
+
+      // Generate sample data only for demo user
+      if (email === 'demo@expensetracker.com') {
+        generateSampleData(email);
+      }
+
       setIsLoading(false);
       return true;
     }

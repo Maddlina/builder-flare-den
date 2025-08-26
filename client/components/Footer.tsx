@@ -32,7 +32,7 @@ export function Footer() {
     {
       type: 'TRON',
       address: 'TXooztaEmCaRccyTbTVspymAgGVxX2fe9P',
-      icon: 'T',
+      icon: '🔴',
       color: 'text-red-500'
     }
   ];
@@ -66,7 +66,8 @@ export function Footer() {
               </div>
               <p className="text-blue-100 mb-4">
                 The most intelligent budget management platform ever created.
-                100% free, no subscriptions, no limits. Built with AI-powered insights for everyone.
+                Completely open source, 100% free forever, no subscriptions, no limits.
+                Built with AI-powered insights and community support for everyone.
               </p>
               <div className="flex flex-wrap gap-2">
                 <Badge className="bg-green-500/20 text-green-100 border-green-400/50">
@@ -114,10 +115,10 @@ export function Footer() {
             <CardContent className="p-6">
               <h3 className="text-xl font-bold text-gray-900 dark:text-gray-100 mb-4 flex items-center gap-2">
                 <Heart className="h-5 w-5 text-red-500" />
-                💰 Crypto Donation Zone
+                💰 Keep Us Open Source & Free!
               </h3>
               <p className="text-gray-600 dark:text-gray-300 mb-4 text-sm">
-                Support Smart Budget development! Your crypto donations help keep this amazing app 100% free forever:
+                🚀 <strong>Help us stay open source and completely free!</strong> Your crypto donations directly support Smart Budget development and ensure we never need subscriptions or ads. Every contribution keeps this powerful financial tool accessible to everyone worldwide.
               </p>
               <div className="space-y-4">
                 {wallets.map((wallet) => (
@@ -158,10 +159,17 @@ export function Footer() {
                   </div>
                 ))}
               </div>
-              <div className="mt-4 p-3 bg-gradient-to-r from-yellow-50 to-orange-50 dark:from-yellow-900/20 dark:to-orange-900/20 rounded-lg border border-yellow-200 dark:border-yellow-800">
-                <p className="text-sm text-center text-yellow-800 dark:text-yellow-200 font-semibold">
-                  🙏 Every donation helps us keep Smart Budget free and add new features!
-                </p>
+              <div className="mt-4 space-y-2">
+                <div className="p-3 bg-gradient-to-r from-green-50 to-emerald-50 dark:from-green-900/20 dark:to-emerald-900/20 rounded-lg border border-green-200 dark:border-green-800">
+                  <p className="text-sm text-center text-green-800 dark:text-green-200 font-semibold">
+                    💖 Your donations keep Smart Budget 100% free and open source for everyone!
+                  </p>
+                </div>
+                <div className="p-3 bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 rounded-lg border border-blue-200 dark:border-blue-800">
+                  <p className="text-xs text-center text-blue-800 dark:text-blue-200">
+                    🔓 <strong>Open Source Promise:</strong> No subscriptions, no premium tiers, no hidden costs - ever!
+                  </p>
+                </div>
               </div>
             </CardContent>
           </Card>
@@ -175,7 +183,7 @@ export function Footer() {
                 Made with <Heart className="inline h-4 w-4 text-red-500 mx-1" /> for the community
               </p>
               <p className="text-sm text-gray-500">
-                © 2024 Smart Budget • Open Source • MIT License
+                © 2024 Smart Budget • Forever Open Source • MIT License • Community Driven
               </p>
             </div>
             

@@ -1,6 +1,9 @@
 import { expenseStore, defaultCategories, defaultPaymentMethods } from './expense-store';
 
-export function generateSampleData() {
+export function generateSampleData(userEmail?: string) {
+  // Only generate sample data for demo users or if explicitly requested
+  if (userEmail && userEmail !== 'demo@expensetracker.com') return;
+
   // Check if data already exists
   const existing = expenseStore.getExpenses();
   if (existing.length > 0) return;
@@ -83,10 +86,5 @@ export function generateSampleData() {
   });
 }
 
-// Auto-generate sample data on first load
-if (typeof window !== 'undefined') {
-  // Small delay to ensure everything is loaded
-  setTimeout(() => {
-    generateSampleData();
-  }, 100);
-}
+// Sample data will be generated only for demo users upon login
+// No auto-generation for all users
