@@ -174,66 +174,94 @@ export default function Login() {
             </div>
           </div>
 
-          {/* Donation Section */}
+          {/* PROMINENT SUPPORT US SECTION */}
           <div className="space-y-4">
-            <div
-              className="flex items-center gap-4 p-4 glass-card cursor-pointer group hover:scale-105 transition-all duration-300 bg-gradient-to-r from-red-50 to-pink-50 dark:from-red-900/20 dark:to-pink-900/20 border border-red-200 dark:border-red-800"
-              onClick={() => setShowDonation(!showDonation)}
-            >
-              <div className="flex items-center gap-3">
-                <div className="relative">
-                  <Heart className="h-6 w-6 text-red-500 group-hover:scale-110 transition-transform fill-red-500 animate-pulse" />
-                  <div className="absolute -top-1 -right-1 w-3 h-3 bg-red-500 rounded-full animate-ping"></div>
+            {/* Big Support Us Banner */}
+            <div className="relative p-6 bg-gradient-to-r from-red-500 via-pink-500 to-purple-600 rounded-2xl shadow-2xl border-4 border-white/20 animate-pulse-slow">
+              <div className="absolute inset-0 bg-gradient-to-r from-red-400 to-pink-400 rounded-2xl blur-xl opacity-50 animate-pulse"></div>
+              <div className="relative text-center space-y-4">
+                <div className="flex justify-center items-center gap-4">
+                  <Heart className="h-12 w-12 text-white fill-white animate-bounce" />
+                  <div className="text-white">
+                    <h2 className="text-3xl font-black tracking-tight">SUPPORT US</h2>
+                    <p className="text-lg font-bold opacity-90">Keep Smart Budget FREE Forever!</p>
+                  </div>
+                  <Heart className="h-12 w-12 text-white fill-white animate-bounce" style={{ animationDelay: '0.5s' }} />
                 </div>
-                <div>
-                  <h3 className="font-semibold text-red-700 dark:text-red-300">💰 Support Smart Budget</h3>
-                  <p className="text-xs text-red-600 dark:text-red-400">Help keep us 100% free & open source!</p>
-                </div>
+                <Button
+                  onClick={() => setShowDonation(!showDonation)}
+                  className="w-full h-14 text-xl font-bold bg-white text-red-600 hover:bg-red-50 hover:text-red-700 hover:scale-105 transition-all duration-300 shadow-lg"
+                >
+                  <Heart className="h-6 w-6 mr-3 fill-red-600" />
+                  {showDonation ? 'Hide Donation Wallets' : 'Show Crypto Wallets'}
+                  <ArrowRight className={`h-6 w-6 ml-3 transition-transform ${showDonation ? 'rotate-90' : ''}`} />
+                </Button>
               </div>
-              <ArrowRight className={`h-4 w-4 text-red-500 transition-transform ${showDonation ? 'rotate-90' : ''}`} />
             </div>
 
             {showDonation && (
-              <div className="space-y-3 animate-slide-down">
-                <div className="p-4 glass-card bg-gradient-to-r from-green-50 to-emerald-50 dark:from-green-900/20 dark:to-emerald-900/20 border border-green-200 dark:border-green-800">
-                  <p className="text-sm text-green-800 dark:text-green-200 mb-3 font-medium">
-                    🚀 Your donations keep Smart Budget completely free for everyone worldwide!
-                  </p>
-                  <div className="space-y-2">
+              <div className="space-y-4 animate-slide-down">
+                <div className="p-6 glass-card bg-gradient-to-br from-green-50 via-emerald-50 to-teal-50 dark:from-green-900/30 dark:via-emerald-900/30 dark:to-teal-900/30 border-2 border-green-300 dark:border-green-700 shadow-xl">
+                  <div className="text-center mb-6">
+                    <h3 className="text-2xl font-bold text-green-800 dark:text-green-200 mb-2">
+                      🚀 CRYPTO DONATION WALLETS
+                    </h3>
+                    <p className="text-lg text-green-700 dark:text-green-300 font-semibold">
+                      Your donations keep Smart Budget 100% FREE for everyone worldwide!
+                    </p>
+                  </div>
+
+                  <div className="space-y-4">
                     {wallets.map((wallet) => (
-                      <div key={wallet.type} className="group bg-white/70 dark:bg-gray-800/70 rounded-lg p-3 border border-gray-200 dark:border-gray-700">
-                        <div className="flex items-center justify-between mb-2">
-                          <span className={`font-bold ${wallet.color} flex items-center gap-2 text-sm`}>
-                            <span className="text-lg">{wallet.icon}</span>
-                            {wallet.type}
+                      <div key={wallet.type} className="group bg-white dark:bg-gray-800 rounded-xl p-5 border-2 border-gray-200 dark:border-gray-600 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-102">
+                        <div className="flex items-center justify-between mb-3">
+                          <span className={`font-bold ${wallet.color} flex items-center gap-3 text-lg`}>
+                            <span className="text-2xl">{wallet.icon}</span>
+                            <span className="text-xl">{wallet.type} Wallet</span>
                           </span>
                           <Button
-                            size="sm"
-                            variant="outline"
+                            size="lg"
                             onClick={() => copyToClipboard(wallet.address, wallet.type)}
-                            className={`h-7 px-2 text-xs transition-all duration-300 hover:scale-105 ${
+                            className={`h-12 px-6 text-base font-bold transition-all duration-300 hover:scale-105 ${
                               copiedWallet === wallet.type
-                                ? 'bg-green-100 border-green-300 text-green-700 dark:bg-green-900/50 dark:text-green-400'
-                                : 'bg-gray-100 hover:bg-gray-200 dark:bg-gray-700 dark:hover:bg-gray-600'
+                                ? 'bg-green-500 hover:bg-green-600 text-white'
+                                : 'bg-blue-500 hover:bg-blue-600 text-white'
                             }`}
                           >
                             {copiedWallet === wallet.type ? (
-                              <span className="text-green-600 dark:text-green-400">✓</span>
+                              <>
+                                <span className="text-lg">✓</span>
+                                <span className="ml-2">COPIED!</span>
+                              </>
                             ) : (
-                              <Copy className="h-3 w-3" />
+                              <>
+                                <Copy className="h-5 w-5 mr-2" />
+                                COPY ADDRESS
+                              </>
                             )}
                           </Button>
                         </div>
-                        <div className="bg-gray-900 dark:bg-gray-950 rounded-md p-2 font-mono text-xs text-green-400 break-all border border-gray-300 dark:border-gray-600">
+                        <div className="bg-gray-900 dark:bg-gray-950 rounded-lg p-4 font-mono text-sm text-green-400 break-all border-2 border-gray-400 dark:border-gray-500 shadow-inner">
                           {wallet.address}
                         </div>
+                        <p className="text-center text-sm text-gray-600 dark:text-gray-400 mt-3 font-medium">
+                          Send {wallet.type} to this address to support development
+                        </p>
                       </div>
                     ))}
                   </div>
-                  <div className="mt-3 p-2 bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 rounded-md border border-blue-200 dark:border-blue-800">
-                    <p className="text-xs text-center text-blue-800 dark:text-blue-200 font-medium">
-                      💖 Thank you for supporting open source development!
-                    </p>
+
+                  <div className="mt-6 space-y-3">
+                    <div className="p-4 bg-gradient-to-r from-yellow-100 to-orange-100 dark:from-yellow-900/30 dark:to-orange-900/30 rounded-xl border-2 border-yellow-300 dark:border-yellow-700">
+                      <p className="text-center text-lg font-bold text-yellow-800 dark:text-yellow-200">
+                        💖 THANK YOU for keeping Smart Budget open source and FREE!
+                      </p>
+                    </div>
+                    <div className="p-4 bg-gradient-to-r from-blue-100 to-purple-100 dark:from-blue-900/30 dark:to-purple-900/30 rounded-xl border-2 border-blue-300 dark:border-blue-700">
+                      <p className="text-center text-base font-semibold text-blue-800 dark:text-blue-200">
+                        🔓 Our Promise: No subscriptions • No premium tiers • No hidden costs • EVER!
+                      </p>
+                    </div>
                   </div>
                 </div>
               </div>
