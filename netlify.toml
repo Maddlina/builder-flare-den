@@ -13,3 +13,11 @@
   from = "/api/*"
   status = 200
   to = "/.netlify/functions/api/:splat"
+
+# SPA redirect rule - This fixes the 404 issue for direct URL access
+# All non-API routes get redirected to index.html with 200 status
+# This allows React Router to handle client-side routing
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
