@@ -12,14 +12,14 @@ import {
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
 import { ThemeToggle } from '@/components/theme/ThemeToggle';
+import { Logo } from '@/components/ui/logo';
 import { useAuth } from '@/lib/auth-context';
-import { 
-  LayoutDashboard, 
-  TrendingUp, 
-  PiggyBank, 
-  Target, 
-  Settings, 
-  Sparkles,
+import {
+  LayoutDashboard,
+  TrendingUp,
+  PiggyBank,
+  Target,
+  Settings,
   LogOut,
   User,
   Menu,
@@ -65,16 +65,12 @@ export function Navigation({ onAddExpense, onExport }: NavigationProps) {
         <div className="flex justify-between items-center h-16">
           {/* Logo and Brand */}
           <div className="flex items-center">
-            <Link to="/dashboard" className="flex items-center gap-3 group">
-              <div className="w-10 h-10 bg-gradient-to-r from-blue-600 to-purple-600 rounded-xl flex items-center justify-center group-hover:scale-105 transition-transform">
-                <Sparkles className="h-5 w-5 text-white" />
-              </div>
-              <div className="hidden sm:block">
-                <h1 className="text-xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-                  Smart Budget
-                </h1>
-                <p className="text-xs text-muted-foreground -mt-1">Intelligent Financial Control</p>
-              </div>
+            <Link to="/dashboard" className="group">
+              <Logo
+                size="md"
+                showText={true}
+                className="group-hover:scale-105 transition-transform duration-300"
+              />
             </Link>
           </div>
 
@@ -227,15 +223,7 @@ export function Navigation({ onAddExpense, onExport }: NavigationProps) {
                 <div className="flex flex-col h-full">
                   {/* Mobile Header */}
                   <div className="flex items-center justify-between pb-6 border-b border-border/40">
-                    <div className="flex items-center gap-3">
-                      <div className="w-10 h-10 bg-gradient-to-r from-blue-600 to-purple-600 rounded-xl flex items-center justify-center">
-                        <Sparkles className="h-5 w-5 text-white" />
-                      </div>
-                      <div>
-                        <h2 className="text-lg font-bold">Smart Budget</h2>
-                        <p className="text-xs text-muted-foreground">Menu</p>
-                      </div>
-                    </div>
+                    <Logo size="md" showText={true} />
                   </div>
 
                   {/* Mobile Search */}
