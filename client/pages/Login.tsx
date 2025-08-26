@@ -8,18 +8,20 @@ import { Alert, AlertDescription } from '@/components/ui/alert';
 import { Badge } from '@/components/ui/badge';
 import { ThemeToggle } from '@/components/theme/ThemeToggle';
 import { useAuth, DEMO_CREDENTIALS } from '@/lib/auth-context';
-import { 
-  Eye, 
-  EyeOff, 
-  Mail, 
-  Lock, 
-  Sparkles, 
-  TrendingUp, 
-  Shield, 
+import {
+  Eye,
+  EyeOff,
+  Mail,
+  Lock,
+  Sparkles,
+  TrendingUp,
+  Shield,
   Zap,
   ArrowRight,
   Star,
-  Users
+  Users,
+  Heart,
+  Copy
 } from 'lucide-react';
 import { toast } from '@/components/ui/use-toast';
 
@@ -28,6 +30,8 @@ export default function Login() {
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState('');
+  const [showDonation, setShowDonation] = useState(false);
+  const [copiedWallet, setCopiedWallet] = useState<string | null>(null);
   const { login, isLoading } = useAuth();
   const navigate = useNavigate();
 
@@ -55,6 +59,41 @@ export default function Login() {
   const fillDemoCredentials = () => {
     setEmail(DEMO_CREDENTIALS.email);
     setPassword(DEMO_CREDENTIALS.password);
+  };
+
+  const wallets = [
+    {
+      type: 'Bitcoin',
+      address: 'bc1qhswl5eru88wzd5jg5wxz0x46cvcmskluyt8mrz',
+      icon: '₿',
+      color: 'text-orange-500'
+    },
+    {
+      type: 'Ethereum',
+      address: '0x1f6b683a7A767Fff7e704D1dc398100783d67319',
+      icon: 'Ξ',
+      color: 'text-blue-500'
+    },
+    {
+      type: 'TRON',
+      address: 'TXooztaEmCaRccyTbTVspymAgGVxX2fe9P',
+      icon: '🔴',
+      color: 'text-red-500'
+    }
+  ];
+
+  const copyToClipboard = async (address: string, type: string) => {
+    try {
+      await navigator.clipboard.writeText(address);
+      setCopiedWallet(type);
+      toast({
+        title: "Address Copied!",
+        description: `${type} wallet address copied to clipboard`,
+      });
+      setTimeout(() => setCopiedWallet(null), 2000);
+    } catch (err) {
+      console.error('Failed to copy:', err);
+    }
   };
 
   return (
@@ -133,6 +172,72 @@ export default function Login() {
               </div>
               <p className="text-xs text-muted-foreground">Loved by 50,000+ users worldwide</p>
             </div>
+          </div>
+
+          {/* Donation Section */}
+          <div className="space-y-4">
+            <div
+              className="flex items-center gap-4 p-4 glass-card cursor-pointer group hover:scale-105 transition-all duration-300 bg-gradient-to-r from-red-50 to-pink-50 dark:from-red-900/20 dark:to-pink-900/20 border border-red-200 dark:border-red-800"
+              onClick={() => setShowDonation(!showDonation)}
+            >
+              <div className="flex items-center gap-3">
+                <div className="relative">
+                  <Heart className="h-6 w-6 text-red-500 group-hover:scale-110 transition-transform fill-red-500 animate-pulse" />
+                  <div className="absolute -top-1 -right-1 w-3 h-3 bg-red-500 rounded-full animate-ping"></div>
+                </div>
+                <div>
+                  <h3 className="font-semibold text-red-700 dark:text-red-300">💰 Support Smart Budget</h3>
+                  <p className="text-xs text-red-600 dark:text-red-400">Help keep us 100% free & open source!</p>
+                </div>
+              </div>
+              <ArrowRight className={`h-4 w-4 text-red-500 transition-transform ${showDonation ? 'rotate-90' : ''}`} />
+            </div>
+
+            {showDonation && (
+              <div className="space-y-3 animate-slide-down">
+                <div className="p-4 glass-card bg-gradient-to-r from-green-50 to-emerald-50 dark:from-green-900/20 dark:to-emerald-900/20 border border-green-200 dark:border-green-800">
+                  <p className="text-sm text-green-800 dark:text-green-200 mb-3 font-medium">
+                    🚀 Your donations keep Smart Budget completely free for everyone worldwide!
+                  </p>
+                  <div className="space-y-2">
+                    {wallets.map((wallet) => (
+                      <div key={wallet.type} className="group bg-white/70 dark:bg-gray-800/70 rounded-lg p-3 border border-gray-200 dark:border-gray-700">
+                        <div className="flex items-center justify-between mb-2">
+                          <span className={`font-bold ${wallet.color} flex items-center gap-2 text-sm`}>
+                            <span className="text-lg">{wallet.icon}</span>
+                            {wallet.type}
+                          </span>
+                          <Button
+                            size="sm"
+                            variant="outline"
+                            onClick={() => copyToClipboard(wallet.address, wallet.type)}
+                            className={`h-7 px-2 text-xs transition-all duration-300 hover:scale-105 ${
+                              copiedWallet === wallet.type
+                                ? 'bg-green-100 border-green-300 text-green-700 dark:bg-green-900/50 dark:text-green-400'
+                                : 'bg-gray-100 hover:bg-gray-200 dark:bg-gray-700 dark:hover:bg-gray-600'
+                            }`}
+                          >
+                            {copiedWallet === wallet.type ? (
+                              <span className="text-green-600 dark:text-green-400">✓</span>
+                            ) : (
+                              <Copy className="h-3 w-3" />
+                            )}
+                          </Button>
+                        </div>
+                        <div className="bg-gray-900 dark:bg-gray-950 rounded-md p-2 font-mono text-xs text-green-400 break-all border border-gray-300 dark:border-gray-600">
+                          {wallet.address}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                  <div className="mt-3 p-2 bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 rounded-md border border-blue-200 dark:border-blue-800">
+                    <p className="text-xs text-center text-blue-800 dark:text-blue-200 font-medium">
+                      💖 Thank you for supporting open source development!
+                    </p>
+                  </div>
+                </div>
+              </div>
+            )}
           </div>
         </div>
 
