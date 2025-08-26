@@ -1,8 +1,8 @@
-import { useState } from 'react';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { Button } from '@/components/ui/button';
-import { Badge } from '@/components/ui/badge';
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+import { useState } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -10,10 +10,10 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from '@/components/ui/dropdown-menu';
-import { ThemeToggle } from '@/components/theme/ThemeToggle';
-import { Logo } from '@/components/ui/logo';
-import { useAuth } from '@/lib/auth-context';
+} from "@/components/ui/dropdown-menu";
+import { ThemeToggle } from "@/components/theme/ThemeToggle";
+import { Logo } from "@/components/ui/logo";
+import { useAuth } from "@/lib/auth-context";
 import {
   LayoutDashboard,
   TrendingUp,
@@ -28,18 +28,18 @@ import {
   Download,
   Bell,
   Search,
-  Heart
-} from 'lucide-react';
-import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
-import { Input } from '@/components/ui/input';
-import { toast } from '@/components/ui/use-toast';
+  Heart,
+} from "lucide-react";
+import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { Input } from "@/components/ui/input";
+import { toast } from "@/components/ui/use-toast";
 
 const navigation = [
-  { name: 'Dashboard', href: '/dashboard', icon: LayoutDashboard },
-  { name: 'Analytics', href: '/analytics', icon: TrendingUp },
-  { name: 'Budgets', href: '/budgets', icon: PiggyBank },
-  { name: 'Goals', href: '/goals', icon: Target },
-  { name: 'Settings', href: '/settings', icon: Settings },
+  { name: "Dashboard", href: "/dashboard", icon: LayoutDashboard },
+  { name: "Analytics", href: "/analytics", icon: TrendingUp },
+  { name: "Budgets", href: "/budgets", icon: PiggyBank },
+  { name: "Goals", href: "/goals", icon: Target },
+  { name: "Settings", href: "/settings", icon: Settings },
 ];
 
 interface NavigationProps {
@@ -55,7 +55,7 @@ export function Navigation({ onAddExpense, onExport }: NavigationProps) {
 
   const handleLogout = () => {
     logout();
-    navigate('/login');
+    navigate("/login");
   };
 
   const isActive = (path: string) => location.pathname === path;
@@ -85,14 +85,16 @@ export function Navigation({ onAddExpense, onExport }: NavigationProps) {
                   to={item.href}
                   className={`flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-medium transition-all duration-300 hover:scale-105 ${
                     active
-                      ? 'bg-primary text-primary-foreground shadow-lg'
-                      : 'text-muted-foreground hover:text-foreground hover:bg-muted/50'
+                      ? "bg-primary text-primary-foreground shadow-lg"
+                      : "text-muted-foreground hover:text-foreground hover:bg-muted/50"
                   }`}
                 >
                   <item.icon className="h-4 w-4" />
                   {item.name}
-                  {item.name === 'Dashboard' && (
-                    <Badge variant="secondary" className="ml-1 text-xs">Pro</Badge>
+                  {item.name === "Dashboard" && (
+                    <Badge variant="secondary" className="ml-1 text-xs">
+                      Pro
+                    </Badge>
                   )}
                 </Link>
               );
@@ -158,7 +160,8 @@ export function Navigation({ onAddExpense, onExport }: NavigationProps) {
                 // Simple notification handling
                 toast({
                   title: "Notifications",
-                  description: "You have 2 new budget alerts and 1 weekly report ready.",
+                  description:
+                    "You have 2 new budget alerts and 1 weekly report ready.",
                 });
               }}
               title="View notifications"
@@ -173,21 +176,22 @@ export function Navigation({ onAddExpense, onExport }: NavigationProps) {
             {/* User Menu */}
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
-                <Button 
-                  variant="ghost" 
+                <Button
+                  variant="ghost"
                   className="relative h-9 w-9 rounded-xl hover:bg-muted/50 transition-all duration-300 hover:scale-105"
                 >
                   <Avatar className="h-8 w-8">
                     <AvatarImage src={user?.avatar} alt={user?.firstName} />
                     <AvatarFallback className="bg-gradient-to-r from-blue-600 to-purple-600 text-white text-xs font-semibold">
-                      {user?.firstName?.[0]}{user?.lastName?.[0]}
+                      {user?.firstName?.[0]}
+                      {user?.lastName?.[0]}
                     </AvatarFallback>
                   </Avatar>
                 </Button>
               </DropdownMenuTrigger>
-              <DropdownMenuContent 
-                className="w-56 bg-background/95 backdrop-blur-sm border-border/40" 
-                align="end" 
+              <DropdownMenuContent
+                className="w-56 bg-background/95 backdrop-blur-sm border-border/40"
+                align="end"
                 forceMount
               >
                 <DropdownMenuLabel className="font-normal">
@@ -201,17 +205,23 @@ export function Navigation({ onAddExpense, onExport }: NavigationProps) {
                   </div>
                 </DropdownMenuLabel>
                 <DropdownMenuSeparator />
-                <DropdownMenuItem className="cursor-pointer" onClick={() => navigate('/settings')}>
+                <DropdownMenuItem
+                  className="cursor-pointer"
+                  onClick={() => navigate("/settings")}
+                >
                   <User className="mr-2 h-4 w-4" />
                   <span>Profile</span>
                 </DropdownMenuItem>
-                <DropdownMenuItem className="cursor-pointer" onClick={() => navigate('/settings')}>
+                <DropdownMenuItem
+                  className="cursor-pointer"
+                  onClick={() => navigate("/settings")}
+                >
                   <Settings className="mr-2 h-4 w-4" />
                   <span>Settings</span>
                 </DropdownMenuItem>
                 <DropdownMenuSeparator />
-                <DropdownMenuItem 
-                  className="cursor-pointer text-destructive focus:text-destructive" 
+                <DropdownMenuItem
+                  className="cursor-pointer text-destructive focus:text-destructive"
                   onClick={handleLogout}
                 >
                   <LogOut className="mr-2 h-4 w-4" />
@@ -223,15 +233,18 @@ export function Navigation({ onAddExpense, onExport }: NavigationProps) {
             {/* Mobile Menu */}
             <Sheet open={mobileMenuOpen} onOpenChange={setMobileMenuOpen}>
               <SheetTrigger asChild>
-                <Button 
-                  variant="ghost" 
+                <Button
+                  variant="ghost"
                   size="sm"
                   className="md:hidden h-9 w-9 rounded-xl hover:bg-muted/50 transition-all duration-300"
                 >
                   <Menu className="h-4 w-4" />
                 </Button>
               </SheetTrigger>
-              <SheetContent side="right" className="w-80 bg-background/95 backdrop-blur-sm">
+              <SheetContent
+                side="right"
+                className="w-80 bg-background/95 backdrop-blur-sm"
+              >
                 <div className="flex flex-col h-full">
                   {/* Mobile Header */}
                   <div className="flex items-center justify-between pb-6 border-b border-border/40">
@@ -259,7 +272,12 @@ export function Navigation({ onAddExpense, onExport }: NavigationProps) {
                     >
                       <Heart className="h-5 w-5 fill-white" />
                       Support Us
-                      <Badge variant="secondary" className="ml-auto text-xs bg-white/20 text-white">❤️</Badge>
+                      <Badge
+                        variant="secondary"
+                        className="ml-auto text-xs bg-white/20 text-white"
+                      >
+                        ❤️
+                      </Badge>
                     </Link>
 
                     {navigation.map((item) => {
@@ -271,14 +289,19 @@ export function Navigation({ onAddExpense, onExport }: NavigationProps) {
                           onClick={() => setMobileMenuOpen(false)}
                           className={`flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium transition-all duration-300 ${
                             active
-                              ? 'bg-primary text-primary-foreground shadow-lg'
-                              : 'text-muted-foreground hover:text-foreground hover:bg-muted/50'
+                              ? "bg-primary text-primary-foreground shadow-lg"
+                              : "text-muted-foreground hover:text-foreground hover:bg-muted/50"
                           }`}
                         >
                           <item.icon className="h-5 w-5" />
                           {item.name}
-                          {item.name === 'Dashboard' && (
-                            <Badge variant="secondary" className="ml-auto text-xs">Pro</Badge>
+                          {item.name === "Dashboard" && (
+                            <Badge
+                              variant="secondary"
+                              className="ml-auto text-xs"
+                            >
+                              Pro
+                            </Badge>
                           )}
                         </Link>
                       );
@@ -288,18 +311,24 @@ export function Navigation({ onAddExpense, onExport }: NavigationProps) {
                   {/* Mobile Actions */}
                   <div className="border-t border-border/40 pt-6 space-y-3">
                     {onAddExpense && (
-                      <Button 
-                        onClick={() => { onAddExpense(); setMobileMenuOpen(false); }}
+                      <Button
+                        onClick={() => {
+                          onAddExpense();
+                          setMobileMenuOpen(false);
+                        }}
                         className="w-full bg-gradient-to-r from-emerald-600 to-green-600 hover:from-emerald-700 hover:to-green-700 text-white"
                       >
                         <Plus className="h-4 w-4 mr-2" />
                         Add Expense
                       </Button>
                     )}
-                    
+
                     {onExport && (
-                      <Button 
-                        onClick={() => { onExport(); setMobileMenuOpen(false); }}
+                      <Button
+                        onClick={() => {
+                          onExport();
+                          setMobileMenuOpen(false);
+                        }}
                         variant="outline"
                         className="w-full"
                       >
