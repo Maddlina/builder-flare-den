@@ -27,7 +27,8 @@ import {
   Plus,
   Download,
   Bell,
-  Search
+  Search,
+  Heart
 } from 'lucide-react';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { Input } from '@/components/ui/input';
@@ -113,8 +114,19 @@ export function Navigation({ onAddExpense, onExport }: NavigationProps) {
           <div className="flex items-center gap-3">
             {/* Action Buttons - Hidden on mobile */}
             <div className="hidden sm:flex items-center gap-2">
+              {/* Support Us Button */}
+              <Link to="/support">
+                <Button
+                  size="sm"
+                  className="bg-gradient-to-r from-red-500 to-pink-500 hover:from-red-600 hover:to-pink-600 text-white shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 animate-pulse"
+                >
+                  <Heart className="h-4 w-4 mr-1 fill-white" />
+                  Support Us
+                </Button>
+              </Link>
+
               {onAddExpense && (
-                <Button 
+                <Button
                   onClick={onAddExpense}
                   size="sm"
                   className="bg-gradient-to-r from-emerald-600 to-green-600 hover:from-emerald-700 hover:to-green-700 text-white shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
@@ -123,9 +135,9 @@ export function Navigation({ onAddExpense, onExport }: NavigationProps) {
                   Add
                 </Button>
               )}
-              
+
               {onExport && (
-                <Button 
+                <Button
                   onClick={onExport}
                   variant="outline"
                   size="sm"
@@ -239,6 +251,17 @@ export function Navigation({ onAddExpense, onExport }: NavigationProps) {
 
                   {/* Mobile Navigation */}
                   <div className="flex-1 py-6 space-y-2">
+                    {/* Support Us - Prominent in mobile */}
+                    <Link
+                      to="/support"
+                      onClick={() => setMobileMenuOpen(false)}
+                      className="flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium bg-gradient-to-r from-red-500 to-pink-500 text-white shadow-lg hover:from-red-600 hover:to-pink-600 transition-all duration-300"
+                    >
+                      <Heart className="h-5 w-5 fill-white" />
+                      Support Us
+                      <Badge variant="secondary" className="ml-auto text-xs bg-white/20 text-white">❤️</Badge>
+                    </Link>
+
                     {navigation.map((item) => {
                       const active = isActive(item.href);
                       return (
